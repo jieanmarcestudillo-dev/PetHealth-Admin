@@ -24,5 +24,7 @@ class completedModel extends Model
         'name_of_medicine',
         'pet_weight',
         'app_date',
+        'updated_at',
+        'created_at',
     ];
 }

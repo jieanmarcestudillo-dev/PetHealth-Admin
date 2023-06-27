@@ -25,5 +25,6 @@ class appointmentModel extends Model
         'app_date',
         'created_at',
         'app_time',
+        'updated_at'
     ];
 }

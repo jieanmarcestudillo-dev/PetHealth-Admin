@@ -58,12 +58,15 @@ Route::get('/', [adminController::class,'login'])->name('login');
         Route::get('printDailyReports', [AdminController::class,'printDailyReports']);
         Route::get('printWeeklyReports', [AdminController::class,'printWeeklyReports']);
         Route::get('printMonthlyReports', [AdminController::class,'printMonthlyReports']);
-        Route::get('printMonthlyReports', [AdminController::class,'printMonthlyReports']);
+        Route::get('printYearlyReports', [AdminController::class,'printYearlyReports']);
+        Route::get('viewClient', [AdminController::class,'viewClient']);
     // GET
-        
+
     // POST
         Route::post('acceptAppointment', [AdminController::class,'acceptAppointment']);
         Route::post('cancelAppointment', [AdminController::class,'cancelAppointment']);
         Route::post('printMonthlyReports', [AdminController::class,'printMonthlyReports']);
+        Route::post('printYearlyReports', [AdminController::class,'printYearlyReports']);
+        Route::post('submitCompletionAppFunction', [AdminController::class,'submitCompletionAppFunction']);
     // POST
 // FUNCTION

@@ -34,6 +34,12 @@ $(document).ready(function(){
                 {"data":"contact"},
                 {"data":"email"},
                 {"data":"address"},
+                {
+                    "data": "user_id",
+                    mRender: function (data, type, row) {
+                        return '<button type="button" data-title="View More Details?" onclick=viewClient(' + data + ') class="btn rounded-0 btn-outline-success btn-sm py-2 px-3"><i class="bi bi-eye"></i></button>';
+                    }
+                }
             ],
             order: [[1, 'asc']],
         });
@@ -45,3 +51,20 @@ $(document).ready(function(){
         }).draw();
     }
 // FETCH UPCOMING OPERATION FOR TABLES
+
+
+// VIEW DETAILS
+    function viewClient(id){
+        $('#viewClientDetails').modal('show')
+        $.ajax({
+            url: '/viewClient',
+            type: 'GET',
+            dataType: 'json',
+            data: {clientId: id},
+        })
+        .done(function(response) {
+            $('#applicantsNationality').val(response.nationality)
+            $('#applicantsReligion').val(response.religion)
+        })
+    }
+// VIEW DETAILS

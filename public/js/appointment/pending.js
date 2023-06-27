@@ -95,33 +95,33 @@ $(document).ready(function(){
 // CANCEL APPOINTMENT
     function cancelAppointment(id){
         Swal.fire({
-        title: 'Are you sure?',
-        text: "Do you want to DECLINE this appointment?",
-        icon: 'question',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes, CANCEL it'
-        }).then((result) => {
-        if (result.isConfirmed) {
-            $.ajax({
-            url: '/cancelAppointment',
-            type: 'POST',
-            dataType: 'json',
-            data: {appointmentId: id},
+            title: 'Are you sure?',
+            text: "Do you want to DECLINE this appointment?",
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, CANCEL it'
+            }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                url: '/cancelAppointment',
+                type: 'POST',
+                dataType: 'json',
+                data: {appointmentId: id},
+            });
+            Swal.fire({
+                title: 'APPOINTMENT CANCELLED SUCCESSFULLY',
+                text: "Check your Schedule",
+                icon: 'success',
+                showConfirmButton: false,
+                timer: 1500,
+            }).then((result) => {
+            if (result) {
+                $('#allPendingAppointmentFunction').DataTable().ajax.reload();
+            }
+            });
+            }
         });
-        Swal.fire({
-            title: 'APPOINTMENT CANCELLED SUCCESSFULLY',
-            text: "Check your Schedule",
-            icon: 'success',
-            showConfirmButton: false,
-            timer: 1500,
-        }).then((result) => {
-        if (result) {
-            $('#allPendingAppointmentFunction').DataTable().ajax.reload();
-        }
-        });
-        }
-        });
-    }  
-// CANCEL APPOINTMENT 
+    }
+// CANCEL APPOINTMENT

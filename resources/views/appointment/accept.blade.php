@@ -66,6 +66,7 @@
                                             <th class="text-center">Type Of Treatment</th>
                                             <th class="text-center">Date</th>
                                             <th class="text-center">Time</th>
+                                            <th class="text-center">Action</th>
                                         </tr>
                                     </thead>
                                 </table>
@@ -76,6 +77,56 @@
             </div>
         {{-- END MAIN CONTENT --}}
     </div>
+
+    {{-- MODAL --}}
+        {{-- COMPLETE APPOINTMENT --}}
+        <!-- Modal -->
+            <div class="modal fade" id="completeAppointmentModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">COMPLETE APPOINTMENT</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="submitCompletionAppFunction" name="submitCompletionAppFunction">
+                            <div class="mb-3">
+                              <label class="form-label">Medicine Info</label>
+                              <input type="text" class="form-control" id="nameOfMeds" aria-describedby="emailHelp">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Weight:</label>
+                                <input type="text" class="form-control" id="petWeight">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Type of Next Appointment:</label>
+                                <select class="form-select" aria-label="Default select example" id="typeOfNextAppointment">
+                                    <option value="Vaccination">Vaccination</option>
+                                    <option value="Deworming">Deworming</option>
+                                    <option value="Heartworm Prevention">Heartworm Prevention</option>
+                                    <option value="Grooming">Grooming</option>
+                                    <option value="Other Treatments">Other Treatments</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Date of Next Appointment:</label>
+                                <input type="date" class="form-control" id="dateOfNextAppointment">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Time of Next Appointment:</label>
+                                <input type="time" class="form-control" id="timeOfNextAppointment">
+                            </div>
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary rounded-0" data-bs-dismiss="modal">CLOSE</button>
+                    <button type="submit" class="btn btn-primary rounded-0">SUBMIT</button>
+                    </form>
+                    </div>
+                </div>
+                </div>
+            </div>
+        {{-- COMPLETE APPOINTMENT --}}
+    {{-- MODAL --}}
 
     {{-- JS --}}
         <script src="{{ asset('/js/dateTime.js') }}"></script>

@@ -57,7 +57,8 @@
                                             <th class="text-center">Full Name</th>
                                             <th class="text-center">Contact</th>
                                             <th class="text-center">Email</th>
-                                            <th class="text-center col-4">Address</th>
+                                            <th class="text-center">Address</th>
+                                            <th class="text-center">Action</th>
                                         </tr>
                                     </thead>
                                 </table>
@@ -68,6 +69,30 @@
             </div>
         {{-- END MAIN CONTENT --}}
     </div>
+
+    {{-- MODAL --}}
+    <div class="modal fade" id="viewClientDetails" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-11">
+                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Owner Details</h1>
+                        </div>
+                        <div class="col-1">
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="card">
+                            
+                        </div>
+                    </div>
+                </div>
+          </div>
+        </div>
+    </div>
+    {{-- MODAL --}}
 
     {{-- JS --}}
         <script src="{{ asset('/js/dateTime.js') }}"></script>

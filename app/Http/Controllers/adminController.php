@@ -14,7 +14,7 @@ use App\Models\pendingModel;
 use App\Models\petModel;
 use App\Models\usersModel;
 use App\Models\appointmentModel;
-use Auth;    
+use Auth;
 use Session;
 use Hash;
 use PDF;
@@ -29,7 +29,7 @@ class adminController extends Controller
                 return view('login');
             }
         // LOGIN ROUTES
-        
+
         // LOGIN FUNCTION
             protected function credentials(Request $request){
                 return [
@@ -55,7 +55,7 @@ class adminController extends Controller
         // LOGIN FUNCTION
 
         // LOGOUT FUNCTION
-            public function logoutFunction(){               
+            public function logoutFunction(){
                 Session::flush();
                 Auth::logout();
                 return response()->json(1);
@@ -68,59 +68,59 @@ class adminController extends Controller
         // MAIN ROUTING
             public function adminDashboardRoutes(){
                 return view('dashboard');
-            } 
+            }
             public function adminClientRoutes(){
                 return view('client');
-            } 
+            }
             public function adminReportRoutes(){
                 return view('reports');
-            } 
+            }
             public function adminRequestRoutes(){
                 return view('request');
-            } 
+            }
             public function adminPendingRoutes(){
                 return view('pending');
-            } 
+            }
             public function adminManageAccount(){
                 return view('account');
-            }       
+            }
         // MAIN ROUTING
 
         // SUB ROUTING
             // REPORTS PAGE
                 public function vaccinationReports(){
                     return view('reports.vaccination');
-                } 
+                }
                 public function dewormingReports(){
                     return view('reports.deworming');
-                } 
+                }
                 public function heartWormReports(){
                     return view('reports.heartWorm');
-                } 
+                }
                 public function groomingReports(){
                     return view('reports.grooming');
-                } 
+                }
                 public function otherReports(){
                     return view('reports.otherReports');
-                } 
+                }
             // REPORTS PAGE
 
             // APPOINTMENT PAGE
                 public function adminCancelAppointment(){
                     return view('appointment.cancel');
-                } 
+                }
                 public function adminAcceptAppointment(){
                     return view('appointment.accept');
-                } 
+                }
                 public function adminCompleteAppointment(){
                     return view('appointment.complete');
-                } 
+                }
             // APPOINTMENT PAGE
 
             // CLIENT PAGE
                 public function adminOwnersPet(){
                     return view('client/pet');
-                }   
+                }
             // CLIENT PAGE
         // SUB ROUTING
     // ROUTING
@@ -190,11 +190,11 @@ class adminController extends Controller
         }
     // ALL DEWORMING COMPLETED REPORTS FUNCTION
 
-    // ALL DEWORMING COMPLETED REPORTS FUNCTION
+    // ALL HEARTWORM PREVENTION COMPLETED REPORTS FUNCTION
         public function getAllHeartWormReportsFunction(Request $request){
             $data = completedModel::join('users', 'completed_tbl.user_id', '=', 'users.user_id')
             ->join('pet_tbl', 'completed_tbl.pet_id', '=', 'pet_tbl.pet_id')
-            ->where('completed_tbl.app_type', '=' , 'HeartWorm')
+            ->where('completed_tbl.app_type', '=' , 'Heartworm Prevention')
             ->select(
                 'completed_tbl.completed_id',
                 'completed_tbl.app_type',
@@ -210,7 +210,7 @@ class adminController extends Controller
             ->get();
             return response()->json($data);
         }
-    // ALL DEWORMING COMPLETED REPORTS FUNCTION
+    // ALL HEARTWORM PREVENTION COMPLETED REPORTS FUNCTION
 
     // ALL GROOMING COMPLETED REPORTS FUNCTION
         public function getAllGroomingReportsFunction(Request $request){
@@ -234,11 +234,11 @@ class adminController extends Controller
         }
     // ALL GROOMING COMPLETED REPORTS FUNCTION
 
-    // ALL GROOMING COMPLETED REPORTS FUNCTION
+    // ALL OTHERS COMPLETED REPORTS FUNCTION
         public function getAllOtherReportsFunction(Request $request){
             $data = completedModel::join('users', 'completed_tbl.user_id', '=', 'users.user_id')
             ->join('pet_tbl', 'completed_tbl.pet_id', '=', 'pet_tbl.pet_id')
-            ->where('completed_tbl.app_type', '=' , 'Others')
+            ->where('completed_tbl.app_type', '=' , 'other')
             ->select(
                 'completed_tbl.completed_id',
                 'completed_tbl.app_type',
@@ -254,7 +254,7 @@ class adminController extends Controller
             ->get();
             return response()->json($data);
         }
-    // ALL GROOMING COMPLETED REPORTS FUNCTION
+    // ALL OTHERS COMPLETED REPORTS FUNCTION
 
     // ALL CLIENTS FUNCTION
         public function getAllClientFunction(Request $request){
@@ -262,8 +262,8 @@ class adminController extends Controller
             return response()->json($data);
         }
     // ALL CLIENTS FUNCTION
-        
-    // ALL PETS FUNCTION       
+
+    // ALL PETS FUNCTION
         public function getAllPetFunction(Request $request){
             $data = petModel::join('users', 'pet_tbl.user_id', '=', 'users.user_id')
             ->select(
@@ -321,7 +321,7 @@ class adminController extends Controller
             ->orderBy('app_date', 'DESC')
             ->get();
             return response()->json($data);
-        }  
+        }
     // ALL CANCEL APPOINTMENT FUNCTION
 
     // ALL ACCEPT APPOINTMENT FUNCTION
@@ -342,7 +342,7 @@ class adminController extends Controller
             ->orderBy('app_date', 'DESC')
             ->get();
             return response()->json($data);
-        } 
+        }
     // ALL ACCEPT APPOINTMENT FUNCTION
 
     // ALL COMPLETE APPOINTMENT FUNCTION
@@ -363,7 +363,7 @@ class adminController extends Controller
             ->orderBy('app_date', 'DESC')
             ->get();
             return response()->json($data);
-        } 
+        }
     // ALL COMPLETE APPOINTMENT FUNCTION
 
     // TOTAL COMPLETED APPOINTMENT
@@ -492,7 +492,7 @@ class adminController extends Controller
         public function cancelAppointment(Request $request){
             $cancelAppointment = appointmentModel::find($request->appointmentId)->update(['status' => 'Cancel']);
             return response()->json($cancelAppointment ? 1 : 0);
-        } 
+        }
     // CANCEL APPOINTMENT
 
     // PRINT DAILY REPORTS
@@ -507,19 +507,19 @@ class adminController extends Controller
             )
             ->orderBy('app_date', 'DESC')
             ->get();
-        
+
         $dailyReports = [
             'startDate' => Carbon::now()->format('F d, Y'),
             'data' => [],
         ];
-        
+
         foreach ($data as $certainData) {
             $dailyReports['data'][] = $certainData;
         }
-        
+
         $pdf = PDF::loadView('pdf.dailyReports', $dailyReports);
         return $pdf->stream('Daily Reports.pdf');
-        
+
         }
     // PRINT DAILY REPORTS
 
@@ -537,17 +537,17 @@ class adminController extends Controller
                 )
                 ->orderBy('app_date', 'DESC')
                 ->get();
-            
+
             $weeklyReports = [
                 'startDate' => Carbon::now()->subDays(7)->format('F d, Y'),
                 'endDate' => Carbon::now()->format('F d, Y'),
                 'data' => [],
             ];
-            
+
             foreach ($data as $certainData) {
                 $weeklyReports['data'][] = $certainData;
             }
-            
+
             $pdf = PDF::loadView('pdf.weeklyReports', $weeklyReports);
             return $pdf->stream('Daily Reports.pdf');
         }
@@ -557,12 +557,12 @@ class adminController extends Controller
         public function printMonthlyReports(Request $request){
             $year = $request->year;
             $month = $request->month;
-            
+
             $data = completedModel::select('app_date')->get();
             $data = $data->filter(function ($item) use ($year, $month) {
                 return date('Y', strtotime($item->app_date)) == $year && date('F', strtotime($item->app_date)) == $month;
             });
-            
+
             $data2 = completedModel::join('users', 'completed_tbl.user_id', '=', 'users.user_id')
                 ->join('pet_tbl', 'completed_tbl.pet_id', '=', 'pet_tbl.pet_id')
                 ->whereIn('completed_tbl.app_date', $data->pluck('app_date'))
@@ -572,12 +572,12 @@ class adminController extends Controller
                 )
                 ->orderBy('app_date', 'DESC')
                 ->get();
-            
+
             $data2 = $data2->map(function ($item, $index) {
                 $item->row_number = $index + 1;
                 return $item;
             });
-            
+
             $monthlyReports = [
                 'data' => $data2,
                 'year' => $year,
@@ -586,7 +586,97 @@ class adminController extends Controller
 
             $pdf = PDF::loadView('pdf.monthlyReports', $monthlyReports);
             return $pdf->stream('Monthly Reports.pdf');
-            
+
         }
     // PRINT MONTHLY REPORTS
+
+    // PRINT YEARLY REPORTS
+        public function printYearlyReports(Request $request){
+            $year = $request->year;
+            $month = $request->month;
+
+            $data = completedModel::select('app_date')->get();
+            $data = $data->filter(function ($item) use ($year, $month) {
+                return date('Y', strtotime($item->app_date)) == $year;
+            });
+
+            $data2 = completedModel::join('users', 'completed_tbl.user_id', '=', 'users.user_id')
+                ->join('pet_tbl', 'completed_tbl.pet_id', '=', 'pet_tbl.pet_id')
+                ->whereIn('completed_tbl.app_date', $data->pluck('app_date'))
+                ->select(
+                    'completed_tbl.completed_id', 'completed_tbl.app_type', 'completed_tbl.name_of_medicine', 'completed_tbl.pet_weight',
+                    'completed_tbl.app_date', 'users.user_fname', 'users.user_lname', 'pet_tbl.pet_name', 'pet_tbl.pet_breed'
+                )
+                ->orderBy('app_date', 'DESC')
+                ->get();
+
+            $data2 = $data2->map(function ($item, $index) {
+                $item->row_number = $index + 1;
+                return $item;
+            });
+
+            $monthlyReports = [
+                'data' => $data2,
+                'year' => $year,
+                'month' => $month,
+            ];
+
+            $pdf = PDF::loadView('pdf.yearlyReports', $monthlyReports);
+            return $pdf->stream('Yearly Reports.pdf');
+
+        }
+    // PRINT YEARLY REPORTS
+
+    // COMPLETE APPOINTMENT FUNCTION
+        public function submitCompletionAppFunction(Request $request){
+         $getPet = appointmentModel::where('app_id', '=', $request->appointmentId)
+         ->select('user_id','pet_id','app_type','app_date')->first();
+         if($request->typeOfNextAppointment != ''){
+             $completeAppointment = completedModel::create([
+                 'user_id' => $getPet->user_id,
+                 'pet_id' => $getPet->pet_id,
+                 'app_type' => $getPet->app_type,
+                 'name_of_medicine' => $request->nameOfMeds,
+                 'pet_weight' => $request->petWeight,
+                 'app_date' => $getPet->app_date,
+                 'updated_at' => now(),
+                 'created_at' => now(),
+             ]);
+             if($completeAppointment){
+                 $createAppointment = appointmentModel::create([
+                     'user_id' => $getPet->user_id,
+                     'pet_id' => $getPet->pet_id,
+                     'app_type' => $request->typeOfNextAppointment,
+                     'status' => 'Pending',
+                     'app_date' => $request->dateOfNextAppointment,
+                     'created_at' => now(),
+                     'app_time' => $request->timeOfNextAppointment,
+                     'updated_at' => now(),
+                 ]);
+                 $updateStatus = appointmentModel::where([['app_id', '=', $request->appointmentId]])->update(['status' => 'Completed']);
+                 return response()->json($updateStatus ? 1 : 0);
+             }
+         }
+        //  else{
+        //      $completeAppointment = completedModel::create([
+        //          'user_id' => $getPet->user_id,
+        //          'pet_id' => $getPet->pet_id,
+        //          'app_type' => $getPet->app_type,
+        //          'name_of_medicine' => $request->nameOfMeds,
+        //          'pet_weight' => $request->petWeight,
+        //          'app_date' => $getPet->app_date,
+        //          'updated_at' => now(),
+        //          'created_at' => now(),
+        //      ]);
+        //      return response()->json($completeAppointment ? 1 : 0);
+        //  }
+        }
+    // COMPLETE APPOINTMENT FUNCTION
+
+    // VIEW CLIENT DETAILS
+        public function viewClient(Request $request){
+            $data = usersModel::where('user_id', $request->user_id)->get();
+            return response()->json($data);
+        }
+    // VIEW CLIENT DETAILS
 }

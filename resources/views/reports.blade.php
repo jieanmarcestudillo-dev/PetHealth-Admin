@@ -107,7 +107,7 @@
                             <button type="button" class="btn rounded-0 px-4 btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#monthlyReport">Monthly</button>
                         </div>
                         <div class="col-3">
-                            <button type="button" class="btn rounded-0 px-4 btn-outline-secondary">Yearly</button>
+                            <button type="button" class="btn rounded-0 px-4 btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#yearlyReport">Yearly</button>
                         </div>
                     </div>
                     </div>
@@ -159,7 +159,7 @@
                                 <option value="2026">2026</option>
                             </select>
                         </div>
-                    </div>             
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary rounded-0" data-bs-dismiss="modal">Close</button>
@@ -170,6 +170,43 @@
             </div>
             </div>
         {{-- MONTHLY --}}
+
+        {{-- YEARLY --}}
+            <div class="modal fade" id="yearlyReport" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Yearly Report</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <form id='selectYearReports' name='selectYearReports' method="POST" action="/printYearlyReports">
+                    @csrf
+                    <div class="modal-body">
+                    <div class="row">
+                        <div class="col-6">
+                            <label for="exampleFormControlInput1" class="form-label">Select Year</label>
+                            <select class="form-select" aria-label="Default select example" name="year" id="year" required>
+                                <option selected>Open this select year</option>
+                                <option value="2020">2020</option>
+                                <option value="2021">2021</option>
+                                <option value="2022">2022</option>
+                                <option value="2023">2023</option>
+                                <option value="2024">2024</option>
+                                <option value="2025">2025</option>
+                                <option value="2026">2026</option>
+                            </select>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary rounded-0" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary rounded-0">Submit</button>
+                    </div>
+                    </form>
+                    </div>
+                </div>
+            </div>
+        {{-- YEARLY --}}
     {{-- MODAL --}}
 
     {{-- JS --}}

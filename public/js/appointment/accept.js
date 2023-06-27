@@ -41,7 +41,12 @@ $(document).ready(function(){
                 "targets": 1
                 },
                 {"data":"app_time"},
-            ],
+                {
+                    "data": "app_id",
+                    mRender: function (data, type, row) {
+                        return '<button type="button" data-title="Deactivate This?" onclick=completeAppointment(' + data + ') class="btn rounded-0 btn-outline-success btn-sm py-2 px-3"><i class="bi bi-check-lg"></i></button> <a href="printCompanyEmployee/' + data + '" class="btn rounded-0 btn-outline-primary btn-sm py-2 px-3" data-title="Print Recruiter?"><i class="bi bi-filetype-pdf"></i></a>';
+                    }
+                }            ],
             order: [[1, 'asc']],
         });
         table.on('order.dt search.dt', function () {
@@ -52,3 +57,57 @@ $(document).ready(function(){
         }).draw();
     }
 // FETCH UPCOMING OPERATION FOR TABLES
+
+
+// COMPLERE APPOINTMENT FETCH APPOINTMENT ID
+    function completeAppointment(id){
+        $('#completeAppointmentModal').modal('show')
+        localStorage.setItem("appointmentId", id);
+    }
+// COMPLERE APPOINTMENT FETCH APPOINTMENT ID
+
+
+// SUBMIT COMPLETION INFO
+    $("body").delegate("#submitCompletionAppFunction","submit",function(e){
+        e.preventDefault();
+        var appointmentId = localStorage.getItem("appointmentId");
+        var typeOfNextAppointment = $('#typeOfNextAppointment').val();
+        var petWeight = $('#petWeight').val();
+        var nameOfMeds = $('#nameOfMeds').val();
+        var dateOfNextAppointment = $('#dateOfNextAppointment').val();
+        var timeOfNextAppointment = $('#timeOfNextAppointment').val();
+        $.ajax({
+            url: "/submitCompletionAppFunction",
+            type:"POST",
+            method:"POST",
+            dataType: "text",
+            data:{appointmentId:appointmentId, petWeight:petWeight, typeOfNextAppointment:typeOfNextAppointment,
+                dateOfNextAppointment:dateOfNextAppointment, timeOfNextAppointment:timeOfNextAppointment,nameOfMeds:nameOfMeds
+            },
+            success:function(response){
+                if(response == 1){
+                    // APPOINTMENT SUBMIT SUCCESSFULY
+                    $("#submitCompletionAppFunction").trigger("reset");
+                    $('#allAcceptAppointmentFunction').DataTable().ajax.reload();
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: 'APPOINTMENT HAS BEEN COMPLETED',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                }else{
+                    // SOMETHING WRONG IN BACKEND
+                    Swal.fire(
+                    'Added Failed',
+                    'Sorry appointment has not complete',
+                    'error'
+                    )
+                }
+            },
+            error:function(error){
+                console.log(error)
+            }
+        })
+    });
+// SUBMIT COMPLETION INFO
