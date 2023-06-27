@@ -60,6 +60,8 @@ Route::get('/', [adminController::class,'login'])->name('login');
         Route::get('printMonthlyReports', [AdminController::class,'printMonthlyReports']);
         Route::get('printYearlyReports', [AdminController::class,'printYearlyReports']);
         Route::get('viewClient', [AdminController::class,'viewClient']);
+        Route::get('viewPet', [AdminController::class,'viewPet']);
+        Route::get('petMedicalHistory', [AdminController::class,'petMedicalHistory']);
     // GET
 
     // POST

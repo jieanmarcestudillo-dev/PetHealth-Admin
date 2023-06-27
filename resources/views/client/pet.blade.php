@@ -54,13 +54,14 @@
                                     <thead>
                                         <tr>
                                             <th class="text-center">No.</th>
-                                            <th class="text-center">Owner</th>
                                             <th class="text-center">Pet Name</th>
                                             <th class="text-center">Breed</th>
                                             <th class="text-center">Species</th>
                                             <th class="text-center">Color</th>
                                             <th class="text-center">Gender</th>
                                             <th class="text-center">Birthdate</th>
+                                            <th class="text-center">Owner</th>
+                                            <th class="text-center">Action</th>
                                         </tr>
                                     </thead>
                                 </table>
@@ -71,6 +72,77 @@
             </div>
         {{-- END MAIN CONTENT --}}
     </div>
+
+    {{-- MODAL --}}
+    <div class="modal fade" id="viewPetDetails" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body m-4">
+                    <div class="row">
+                        <div class="col-11">
+                            <h5 class="modal-title fs-5" id="staticBackdropLabel">PET DETAILS</h5>
+                        </div>
+                        <div class="col-1">
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                    </div>
+                    <div class="row mt-1 g-3">
+                        <div class="col-12">
+                            <label class="form-label">Owner Name</label>
+                            <input readonly type="text" class="form-control bg-body" id="ownerName">
+                        </div>
+                    </div>
+                    <div class="row mt-1 g-3">
+                        <div class="col-4">
+                            <label class="form-label">Pet Name</label>
+                            <input readonly type="text" class="form-control bg-body" id="pet_name">
+                        </div>
+                        <div class="col-4">
+                            <label class="form-label">Pet Breed</label>
+                            <input readonly type="text" class="form-control bg-body" id="pet_breed">
+                        </div>
+                        <div class="col-4">
+                            <label class="form-label">Pet Species</label>
+                            <input readonly type="text" class="form-control bg-body" id="species">
+                        </div>
+                    </div>
+                    <div class="row mt-1 g-3">
+                        <div class="col-4">
+                            <label class="form-label">Pet Color</label>
+                            <input readonly type="text" class="form-control bg-body" id="pet_cm">
+                        </div>
+                        <div class="col-4">
+                            <label class="form-label">Pet Birthdate</label>
+                            <input readonly type="text" class="form-control bg-body" id="birthdate">
+                        </div>
+                         <div class="col-4">
+                            <label class="form-label">Pet Gender</label>
+                            <input readonly type="text" class="form-control bg-body" id="gender">
+                        </div>
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col-11">
+                            <h5 class="modal-title fs-5" id="staticBackdropLabel">MEDICAL HISTORY</h5>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <table class="table table-sm table-bordered text-center align-middle mt-2">
+                            <thead>
+                                <th>No.</th>
+                                <th>Date</th>
+                                <th>Type</th>
+                                <th>Weight</th>
+                                <th>Medicine</th>
+                            </thead>
+                            <tbody id="medicalHistory"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{-- MODAL --}}
 
     {{-- JS --}}
         <script src="{{ asset('/js/dateTime.js') }}"></script>

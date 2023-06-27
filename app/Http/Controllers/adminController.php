@@ -631,7 +631,7 @@ class adminController extends Controller
         public function submitCompletionAppFunction(Request $request){
          $getPet = appointmentModel::where('app_id', '=', $request->appointmentId)
          ->select('user_id','pet_id','app_type','app_date')->first();
-         if($request->typeOfNextAppointment != ''){
+        if ($request->typeOfNextAppointment !== 'None') {
              $completeAppointment = completedModel::create([
                  'user_id' => $getPet->user_id,
                  'pet_id' => $getPet->pet_id,
@@ -656,20 +656,22 @@ class adminController extends Controller
                  $updateStatus = appointmentModel::where([['app_id', '=', $request->appointmentId]])->update(['status' => 'Completed']);
                  return response()->json($updateStatus ? 1 : 0);
              }
+         }else{
+            $completeAppointment2 = completedModel::create([
+                 'user_id' => $getPet->user_id,
+                 'pet_id' => $getPet->pet_id,
+                 'app_type' => $getPet->app_type,
+                 'name_of_medicine' => $request->nameOfMeds,
+                 'pet_weight' => $request->petWeight,
+                 'app_date' => $getPet->app_date,
+                 'updated_at' => now(),
+                 'created_at' => now(),
+             ]);
+             if($completeAppointment2){
+                $updateStatus = appointmentModel::where([['app_id', '=', $request->appointmentId]])->update(['status' => 'Completed']);
+                return response()->json($updateStatus ? 1 : 0);
+             }
          }
-        //  else{
-        //      $completeAppointment = completedModel::create([
-        //          'user_id' => $getPet->user_id,
-        //          'pet_id' => $getPet->pet_id,
-        //          'app_type' => $getPet->app_type,
-        //          'name_of_medicine' => $request->nameOfMeds,
-        //          'pet_weight' => $request->petWeight,
-        //          'app_date' => $getPet->app_date,
-        //          'updated_at' => now(),
-        //          'created_at' => now(),
-        //      ]);
-        //      return response()->json($completeAppointment ? 1 : 0);
-        //  }
         }
     // COMPLETE APPOINTMENT FUNCTION
 
@@ -680,4 +682,48 @@ class adminController extends Controller
             return response()->json($data);
         }
     // VIEW CLIENT DETAILS
+
+
+    // VIEW PER DETAILS
+        public function viewPet(Request $request){
+            $data = petModel::join('users', 'pet_tbl.user_id', '=', 'users.user_id')
+            ->where('pet_tbl.pet_id', '=' , $request->petId)->first();
+            return response()->json($data);
+        }
+    // VIEW PER DETAILS
+
+    // SHOW MEDICAL HISTORY
+        public function petMedicalHistory(Request $request){
+            $data = completedModel::join('pet_tbl', 'completed_tbl.pet_id', '=', 'pet_tbl.pet_id')
+            ->where('pet_tbl.pet_id', '=', $request->petId2)
+            ->orderBy('app_date', 'DESC')
+            ->get();
+            if($data->isNotEmpty()){
+                foreach($data as $count => $certainData){
+                    $count = $count +1;
+                    $newDate = date('F d, Y',strtotime($certainData->app_date));
+                    echo "
+                    <tr>
+                        <td>$count</td>
+                        <td>$newDate</td>
+                        <td>$certainData->app_type</td>
+                        <td>$certainData->pet_weight</td>
+                        <td>$certainData->name_of_medicine</td>
+                    </tr>
+                    ";
+                }
+            }else{
+                 echo "
+                    <tr>
+                        <td class='0'></td>
+                        <td class='0'></td>
+                        <td class='12'>NO DATA FOUND</td>
+                        <td class='0'></td>
+                        <td class='0'></td>
+                    </tr>
+                ";
+            }
+            // return response()->json($data);
+        }
+    // SHOW MEDICAL HISTORY
 }

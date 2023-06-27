@@ -23,8 +23,8 @@
                 {{-- NAV BAR --}}
                     <nav class="navbar navbar-expand-lg text-white border-bottom">
                         <div class="container-fluid">
-                            {{-- <button class="btn btn-lg" id="sidebarToggle"><i class="fa-solid fa-bars"></i></button> --}}
-                            <h4 class="ms-2">DASHBOARD</h4>
+                            {{-- <button class="btn btn-lg px-4 m-0" id="sidebarToggle"><i class="fa-solid fa-bars"></i></button> --}}
+                            <h4 class="m-0">DASHBOARD</h4>
                             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                                 <ul class="navbar-nav ms-auto">
                                     <li>
@@ -50,7 +50,7 @@
                                         </div>
                                         <div class="col-10 text-center" style="line-height:19px; padding-top:1.5rem">
                                             <p class="card-text fw-bold" style="font-size: 2rem; color:#BF622A;" id="totalCompletedAppointment"></p>
-                                            <p class="card-text fw-bold" style="font-size: 13px; color:#BF622A;">COMPLETED APPOINTMENT</p>
+                                            <p class="card-text fw-bold" style="font-size: 12px; color:#BF622A;">COMPLETED APPOINTMENT</p>
                                         </div>
                                     </div>
                                 </div>
@@ -65,7 +65,7 @@
                                         </div>
                                         <div class="col-9 text-center" style="line-height:19px; padding-top:1.5rem">
                                             <p class="card-text fw-bold pe-2" style="font-size: 2rem; color:#BF622A;" id="totalClientRegistered"></p>
-                                            <p class="card-text fw-bold" style="font-size: 13px; letter-spacing:1px; color:#BF622A;">TOTAL CLIENT</p>
+                                            <p class="card-text fw-bold" style="font-size: 12px; letter-spacing:1px; color:#BF622A;">TOTAL CLIENT</p>
                                         </div>
                                     </div>
                                 </div>
@@ -80,7 +80,7 @@
                                         </div>
                                         <div class="col-10 text-center" style="line-height:19px; padding-top:1.5rem">
                                             <p class="card-text fw-bold pe-2" style="font-size: 2rem; color:#BF622A;" id="totalPendingAppointment"></p>
-                                            <p class="card-text fw-bold" style="font-size: 13px; letter-spacing:1px; color:#BF622A;">PENDING APPOINTMENT</p>
+                                            <p class="card-text fw-bold" style="font-size: 12px; letter-spacing:1px; color:#BF622A;">PENDING APPOINTMENT</p>
                                         </div>
                                     </div>
                                 </div>
@@ -95,7 +95,7 @@
                                         </div>
                                         <div class="col-10 text-center" style="line-height:19px; padding-top:1.5rem">
                                             <p class="card-text fw-bold pe-2" style="font-size: 2rem; color:#BF622A;" id="totalAcceptAppointment"></p>
-                                            <p class="card-text fw-bold" style="font-size: 13px; letter-spacing:1px; color:#BF622A;">TOTAL SCHEDULE</p>
+                                            <p class="card-text fw-bold" style="font-size: 12px; letter-spacing:1px; color:#BF622A;">TOTAL SCHEDULE</p>
                                         </div>
                                     </div>
                                 </div>

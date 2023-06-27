@@ -98,9 +98,11 @@
                                 <label class="form-label">Weight:</label>
                                 <input type="text" class="form-control" id="petWeight">
                             </div>
-                            <div class="mb-3">
+                            <h1 class="modal-title fs-5" id="staticBackdropLabel">SET DATE FOR THE NEXT APPOINTMENT (IF NECESSARY)</h1>
+                            <div class="my-3">
                                 <label class="form-label">Type of Next Appointment:</label>
                                 <select class="form-select" aria-label="Default select example" id="typeOfNextAppointment">
+                                    <option value="None" selected>Open this select type</option>
                                     <option value="Vaccination">Vaccination</option>
                                     <option value="Deworming">Deworming</option>
                                     <option value="Heartworm Prevention">Heartworm Prevention</option>
@@ -109,11 +111,11 @@
                                 </select>
                             </div>
                             <div class="mb-3">
-                                <label class="form-label">Date of Next Appointment:</label>
+                                <label class="form-label">Date of Next Appointment: (optional)</label>
                                 <input type="date" class="form-control" id="dateOfNextAppointment">
                             </div>
                             <div class="mb-3">
-                                <label class="form-label">Time of Next Appointment:</label>
+                                <label class="form-label">Time of Next Appointment: (optional)</label>
                                 <input type="time" class="form-control" id="timeOfNextAppointment">
                             </div>
                     </div>
