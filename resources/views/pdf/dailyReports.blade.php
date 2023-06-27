@@ -51,9 +51,9 @@
 
     {{-- BODY --}}
     <div class="section mt-4">
-        <p class="fw-bold">APPOINTMENT SUMMARY</p>
+        <p class="fw-bold font-size font">APPOINTMENT SUMMARY</p>
         <div class="item">
-            <p class="item-title">DAILY REPORT: <br> Current Date: {{$startDate}}</p>
+            <p class="font-size font">DAILY REPORT: <br> Current Date: {{$startDate}}</p>
         </div>
     </div>
     @if($data != NULL)

@@ -57,15 +57,15 @@
 
 
     <div class="section mt-4">
-        <p class="fw-bold">APPOINTMENT SUMMARY</p>
+        <p class="fw-bold font-size font">APPOINTMENT SUMMARY</p>
         <div class="item">
-            <p class="item-title">WEEKLY REPORT: <br> Start Date: {{$startDate}} <br> End Date: {{$endDate}}</p>
+            <p class="font-size font">WEEKLY REPORT: <br> Start Date: {{$startDate}} <br> End Date: {{$endDate}}</p>
         </div>
     </div>
     @if($data != NULL)
     <table class='table table-bordered text-center align-middle'>
         <thead>
-            <tr>
+            <tr class="font-size font">
                 <th>No.</th>
                 <th>Client</th>
                 <th>Pet Name</th>
@@ -78,7 +78,7 @@
         <tbody>
             @foreach($data as $count => $certainData)
             {{$count = $count + 1}}
-            <tr>
+            <tr class="font-size font">
                 <td>{{$count}}</td>
                 <td>{{$certainData->user_fname}} {{$certainData->user_lname}}</td>
                 <td>{{$certainData->pet_name}}</td>
