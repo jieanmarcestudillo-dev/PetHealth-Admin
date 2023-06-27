@@ -77,15 +77,41 @@
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-11">
-                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Owner Details</h1>
+                            <h5 class="modal-title fs-5" id="staticBackdropLabel">OWNER DETAILS</h5>
                         </div>
                         <div class="col-1">
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="card">
-                            
+                    <div class="row mt-1 g-3">
+                        <div class="col-6">
+                            <label class="form-label">First Name</label>
+                            <input type="text" class="form-control" id="firstName">
+                        </div>
+                        <div class="col-6">
+                            <label class="form-label">Last Name</label>
+                            <input type="text" class="form-control" id="lastName">
+                        </div>
+                    </div>
+                    <div class="row mt-1 g-3">
+                        <div class="col-12">
+                            <label class="form-label">Address</label>
+                            <input type="text" class="form-control" id="address">
+                        </div>
+                    </div>
+                    <div class="row mt-1 g-3">
+                        <div class="col-6">
+                            <label class="form-label">Contact</label>
+                            <input type="text" class="form-control" id="contact">
+                        </div>
+                        <div class="col-6">
+                            <label class="form-label">Email</label>
+                            <input type="text" class="form-control" id="email">
+                        </div>
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col-11">
+                            <h5 class="modal-title fs-5" id="staticBackdropLabel">PET DETAILS</h5>
                         </div>
                     </div>
                 </div>

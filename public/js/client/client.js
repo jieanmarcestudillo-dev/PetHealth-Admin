@@ -63,8 +63,15 @@ $(document).ready(function(){
             data: {clientId: id},
         })
         .done(function(response) {
-            $('#applicantsNationality').val(response.nationality)
-            $('#applicantsReligion').val(response.religion)
+            $('#firstName').val(response.user_fname)
+            $('#lastName').val(response.user_lname)
+            $('#contact').val(response.contact)
+            $('#address').val(response.address)
+            $('#email').val(response.email)
+            // $('#applicantsReligion').val(response.pet_cm)
+            // $('#applicantsReligion').val(response.pet_breed)
+            // $('#applicantsReligion').val(response.birthdate)
+            // $('#applicantsReligion').val(response.gender)
         })
     }
 // VIEW DETAILS

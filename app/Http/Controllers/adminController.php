@@ -675,7 +675,8 @@ class adminController extends Controller
 
     // VIEW CLIENT DETAILS
         public function viewClient(Request $request){
-            $data = usersModel::where('user_id', $request->user_id)->get();
+            $data = usersModel::join('pet_tbl', 'pet_tbl.user_id', '=', 'users.user_id')
+            ->where('users.user_id', '=' , $request->clientId)->first();
             return response()->json($data);
         }
     // VIEW CLIENT DETAILS
