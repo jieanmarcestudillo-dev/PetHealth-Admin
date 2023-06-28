@@ -136,7 +136,7 @@
                                         <th>Weight</th>
                                         <th>Medicine</th>
                                     </thead>
-                                    <tbody id="medicalHistory"></tbody>
+                                    <tbody id="medicalHistory" class="border-1"></tbody>
                                 </table>
                             </div>
                         </div>

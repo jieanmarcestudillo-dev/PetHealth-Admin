@@ -53,10 +53,10 @@
                                         <a class="nav-link active" href="/adminAcceptAppointment">Confirmed</a>
                                     </li>
                                     <li class="nav-item ms-auto">
-                                        <a class="nav-link active" href="#">All</a>
+                                        <a class="nav-link" href="/adminAcceptAppointment">All</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="/thisDayAppointment">This Day</a>
+                                        <a class="nav-link active" href="#">This Day</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" href="/thisWeekAppointment">This Week</a>
@@ -65,7 +65,7 @@
                                         <a class="nav-link" href="/thisMonthAppointment">This Month</a>
                                     </li>
                                 </ul>
-                                <table id="allAcceptAppointmentFunction" class="table table-bordered text-center align-middle">
+                                <table id="allThisDayAppointmentFunction" class="table table-bordered text-center align-middle">
                                     <thead>
                                         <tr>
                                             <th class="text-center">No.</th>
@@ -89,7 +89,7 @@
 
     {{-- MODAL --}}
         {{-- COMPLETE APPOINTMENT --}}
-        <!-- Modal -->
+            <!-- Modal -->
             <div class="modal fade" id="completeAppointmentModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                 <div class="modal-dialog">
                 <div class="modal-content">
@@ -143,7 +143,7 @@
         <script src="{{ asset('/js/dateTime.js') }}"></script>
         <script src="{{ asset('/js/sideNav.js') }}"></script>
         <script src="{{ asset('/js/logoutFunction.js') }}"></script>
-        <script src="{{ asset('/js/appointment/accept.js') }}"></script>
+        <script src="{{ asset('/js/sorting/day.js') }}"></script>
     {{-- END JS --}}
 </body>
 </html>

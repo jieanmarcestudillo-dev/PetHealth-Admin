@@ -122,6 +122,18 @@ class adminController extends Controller
                     return view('client/pet');
                 }
             // CLIENT PAGE
+
+            // APPOINTMENT SORTING
+                public function thisDayAppointment(){
+                    return view('sorting/day');
+                }
+                public function thisWeekAppointment(){
+                    return view('sorting/week');
+                }
+                public function thisMonthAppointment(){
+                    return view('sorting/month');
+                }
+            // APPOINTMENT SORTING
         // SUB ROUTING
     // ROUTING
 
@@ -837,4 +849,62 @@ class adminController extends Controller
 
         }
     // PRINT CLIENT INFO
+
+    // ALL THIS DAY FUNCTION
+        public function allThisDayAppointmentFunction(Request $request){
+            date_default_timezone_set('Asia/Manila');
+            $data = appointmentModel::join('users', 'appointment_tbl.user_id', '=', 'users.user_id')
+            ->join('pet_tbl', 'appointment_tbl.pet_id', '=', 'pet_tbl.pet_id')
+            ->where([['appointment_tbl.app_date', '!=', Carbon::now()->format('Y-m-d')],
+            ['appointment_tbl.app_date', '=', 'Confirm']])
+            ->select(
+                'appointment_tbl.app_id', 'appointment_tbl.app_type','appointment_tbl.app_date', 
+                'users.user_fname', 'users.user_lname', 'pet_tbl.pet_name', 'pet_tbl.pet_breed',
+            )
+            ->orderBy('app_date', 'DESC')
+            ->get();
+
+            return response()->json($data);
+        }
+    // ALL THIS DAY FUNCTION
+
+    // ALL THIS WEEK FUNCTION
+        public function allThisWeekAppointmentFunction(Request $request){
+            date_default_timezone_set('Asia/Manila');
+            $startDate = Carbon::now()->format('Y-m-d');
+            $endDate = Carbon::now()->addDays(7)->format('Y-m-d');
+            date_default_timezone_set('Asia/Manila');
+            $data = appointmentModel::join('users', 'appointment_tbl.user_id', '=', 'users.user_id')
+            ->join('pet_tbl', 'appointment_tbl.pet_id', '=', 'pet_tbl.pet_id')
+            ->whereBetween('appointment_tbl.app_date', [$startDate, $endDate])
+            ->where('appointment_tbl.status', '=', 'Confirm')
+            ->select(
+                'appointment_tbl.app_id', 'appointment_tbl.app_type','appointment_tbl.app_date', 
+                'users.user_fname', 'users.user_lname', 'pet_tbl.pet_name', 'pet_tbl.pet_breed',
+            )
+            ->orderBy('app_date', 'DESC')
+            ->get();
+
+            return response()->json($data);
+        } 
+    // ALL THIS WEEK FUNCTION
+
+    // ALL THIS MONTH FUNCTION
+        public function allThisMonthAppointmentFunction(Request $request){
+            date_default_timezone_set('Asia/Manila');
+            $startDate = Carbon::now()->format('Y-m-d');
+            $endDate = Carbon::now()->addDays(30)->format('Y-m-d');
+            $data = appointmentModel::join('users', 'appointment_tbl.user_id', '=', 'users.user_id')
+                ->join('pet_tbl', 'appointment_tbl.pet_id', '=', 'pet_tbl.pet_id')
+                ->whereBetween('appointment_tbl.app_date', [$startDate, $endDate])
+                ->where('appointment_tbl.status', '=', 'Confirm')
+                ->select(
+                    'appointment_tbl.app_id', 'appointment_tbl.app_type','appointment_tbl.app_date', 
+                    'users.user_fname', 'users.user_lname', 'pet_tbl.pet_name', 'pet_tbl.pet_breed',
+                )
+                ->orderBy('appointment_tbl.app_date', 'DESC')
+                ->get();
+            return response()->json($data);
+        } 
+    // ALL THIS MONTH FUNCTION
 }

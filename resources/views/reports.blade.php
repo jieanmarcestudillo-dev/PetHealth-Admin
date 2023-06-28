@@ -183,7 +183,7 @@
                     @csrf
                     <div class="modal-body">
                     <div class="row">
-                        <div class="col-8">
+                        <div class="col-7">
                             <label for="exampleFormControlInput1" class="form-label">Select Year</label>
                             <select class="form-select rounded-0" aria-label="Default select example" name="year" id="year" required>
                                 <option selected>Open this select year</option>
@@ -196,7 +196,7 @@
                                 <option value="2026">2026</option>
                             </select>
                         </div>
-                        <div class="col-4">
+                        <div class="col-5">
                             <label for="exampleFormControlInput1" class="form-label me-5 pe-5">Action</label>
                             <button type="button" class="btn btn-secondary rounded-0" data-bs-dismiss="modal">Close</button>
                             <button type="submit" class="btn btn-primary rounded-0">Submit</button>

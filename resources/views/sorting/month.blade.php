@@ -53,7 +53,7 @@
                                         <a class="nav-link active" href="/adminAcceptAppointment">Confirmed</a>
                                     </li>
                                     <li class="nav-item ms-auto">
-                                        <a class="nav-link active" href="#">All</a>
+                                        <a class="nav-link" href="/adminAcceptAppointment">All</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" href="/thisDayAppointment">This Day</a>
@@ -62,10 +62,10 @@
                                         <a class="nav-link" href="/thisWeekAppointment">This Week</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="/thisMonthAppointment">This Month</a>
+                                        <a class="nav-link active" href="#">This Month</a>
                                     </li>
                                 </ul>
-                                <table id="allAcceptAppointmentFunction" class="table table-bordered text-center align-middle">
+                                <table id="allThisMonthAppointmentFunction" class="table table-bordered text-center align-middle">
                                     <thead>
                                         <tr>
                                             <th class="text-center">No.</th>
@@ -89,7 +89,7 @@
 
     {{-- MODAL --}}
         {{-- COMPLETE APPOINTMENT --}}
-        <!-- Modal -->
+            <!-- Modal -->
             <div class="modal fade" id="completeAppointmentModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                 <div class="modal-dialog">
                 <div class="modal-content">
@@ -107,7 +107,7 @@
                                 <label class="form-label">Weight:</label>
                                 <input type="text" class="form-control" id="petWeight">
                             </div>
-                            <p class="text-start fw-bold" id="staticBackdropLabel">SET DATE FOR THE NEXT APPOINTMENT (IF NECESSARY)</p>
+                            <h1 class="modal-title fs-5" id="staticBackdropLabel">SET DATE FOR THE NEXT APPOINTMENT (IF NECESSARY)</h1>
                             <div class="my-3">
                                 <label class="form-label">Type of Next Appointment:</label>
                                 <select class="form-select" aria-label="Default select example" id="typeOfNextAppointment">
@@ -143,7 +143,7 @@
         <script src="{{ asset('/js/dateTime.js') }}"></script>
         <script src="{{ asset('/js/sideNav.js') }}"></script>
         <script src="{{ asset('/js/logoutFunction.js') }}"></script>
-        <script src="{{ asset('/js/appointment/accept.js') }}"></script>
+        <script src="{{ asset('/js/sorting/month.js') }}"></script>
     {{-- END JS --}}
 </body>
 </html>

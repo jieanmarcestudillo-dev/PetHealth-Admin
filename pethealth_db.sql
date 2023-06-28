@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 28, 2023 at 11:25 AM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
+-- Generation Time: Jun 28, 2023 at 05:51 PM
+-- Server version: 10.4.27-MariaDB
+-- PHP Version: 8.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `pethealth_db`
+-- Database: `pet_db`
 --
 
 -- --------------------------------------------------------
@@ -73,8 +73,9 @@ INSERT INTO `appointment_tbl` (`app_id`, `user_id`, `pet_id`, `app_type`, `statu
 (25, 6, 19, 'other', 'Completed', '2023-06-30', '2023-06-23', '13:00:00', '2023-06-27 09:49:04'),
 (26, 7, 22, 'grooming', 'Cancel', '2023-06-28', '2023-06-23', '11:00:00', '2023-06-25 22:05:34'),
 (27, 3, 17, 'heartworm', 'Completed', '2023-06-23', '2023-06-23', '08:00:00', '2023-06-27 09:54:03'),
-(28, 3, 17, 'Other Treatments', 'Pending', '2023-06-30', '2023-06-28', '10:00:00', '2023-06-27 17:03:11'),
-(29, 7, 22, 'Heartworm Prevention', 'Pending', '2023-07-03', '2023-06-28', '20:00:00', '2023-06-27 17:16:09');
+(28, 3, 17, 'Other Treatments', 'Confirm', '2023-06-30', '2023-06-28', '10:00:00', '2023-06-28 07:25:07'),
+(29, 7, 22, 'Heartworm Prevention', 'Pending', '2023-07-03', '2023-06-28', '20:00:00', '2023-06-27 17:16:09'),
+(30, 6, 19, 'Deworming', 'Completed', '2023-07-10', '2023-06-28', '10:30:00', '2023-06-28 07:20:41');
 
 -- --------------------------------------------------------
 
@@ -101,8 +102,9 @@ CREATE TABLE `completed_tbl` (
 INSERT INTO `completed_tbl` (`completed_id`, `user_id`, `pet_id`, `app_type`, `name_of_medicine`, `pet_weight`, `app_date`, `updated_at`, `created_at`) VALUES
 (1, 3, 17, 'Deworming', 'Solmux', '6.8kg', '2023-04-24', '2023-06-27 17:13:37', '2023-06-27 17:13:37'),
 (3, 3, 17, 'Vaccination', 'Nobivac', '5.5kg', '2023-05-15', '2023-06-27 17:13:37', '2023-06-27 17:13:37'),
-(14, 6, 19, 'Grooming', 'Bactidol', '8kg', '2023-06-30', '2023-06-27 09:49:04', '2023-06-27 09:49:04'),
-(15, 3, 17, 'heartworm', 'Bactidol , Solmux , Biogesic', '8kg', '2023-06-23', '2023-06-27 09:54:03', '2023-06-27 09:54:03');
+(14, 6, 19, 'Grooming', 'Bactidol', '8kg', '2023-06-15', '2023-06-27 09:49:04', '2023-06-27 09:49:04'),
+(15, 3, 17, 'heartworm', 'Bactidol , Solmux , Biogesic', '8kg', '2023-06-23', '2023-06-27 09:54:03', '2023-06-27 09:54:03'),
+(16, 6, 19, 'Deworming', 'Cherifer', '6kg', '2023-06-09', '2023-06-28 07:20:41', '2023-06-28 07:20:41');
 
 -- --------------------------------------------------------
 
@@ -225,13 +227,13 @@ ALTER TABLE `admin_tbl`
 -- AUTO_INCREMENT for table `appointment_tbl`
 --
 ALTER TABLE `appointment_tbl`
-  MODIFY `app_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `app_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `completed_tbl`
 --
 ALTER TABLE `completed_tbl`
-  MODIFY `completed_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `completed_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `pet_tbl`

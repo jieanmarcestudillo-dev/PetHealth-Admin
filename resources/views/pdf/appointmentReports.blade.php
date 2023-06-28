@@ -104,9 +104,20 @@
             <div class="section-title">APPOINTMENT SUMMARY</div>
         </div>
         <div class="section">
-        <div class="section-title">Profile Summary</div>
+          <div class="section-title">DATE OF AN APPOINTMENT</div>
+        </div>
         <div class="item">
-          <span class="item-title">Last Name:</span>
+          <span class="item-title">Date:</span>
+          <span class="item-content">{{date('F j, Y',strtotime($certainData->app_date))}}</span>
+        </div>
+        <div class="item">
+          <span class="item-title">Time:</span>
+          <span class="item-content">{{date('H:i A',strtotime($certainData->app_time))}}</span>
+        </div>
+        <div class="section mt-4">
+          <div class="section-title">Owner Information</div>
+        <div class="item">
+          <span class="item-title mt-3">Last Name:</span>
           <span class="item-content">{{$certainData->user_lname}}</span>
         </div>
         <div class="item">
@@ -122,10 +133,10 @@
           <span class="item-content">{{$certainData->email}}</span>
         </div>
       </div>
-      <div class="section">
+      <div class="section mt-3">
         <div class="section-title">Pet Information</div>
         <div class="item">
-          <span class="item-title">Pet Name:</span>
+          <span class="item-title mt-3">Pet Name:</span>
           <span class="item-content">{{$certainData->pet_name}}</span>
         </div>
         <div class="item">

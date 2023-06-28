@@ -31,6 +31,12 @@ Route::get('/', [adminController::class,'login'])->name('login');
         Route::get('adminAcceptAppointment', [AdminController::class,'adminAcceptAppointment']);
         Route::get('adminCompleteAppointment', [AdminController::class,'adminCompleteAppointment']);
         Route::get('adminOwnersPet', [AdminController::class,'adminOwnersPet']);
+        Route::get('thisDayAppointment', [AdminController::class,'thisDayAppointment']);
+        Route::get('allThisDayAppointmentFunction', [AdminController::class,'allThisDayAppointmentFunction']);
+        Route::get('thisWeekAppointment', [AdminController::class,'thisWeekAppointment']);
+        Route::get('allThisWeekAppointmentFunction', [AdminController::class,'allThisWeekAppointmentFunction']);
+        Route::get('thisMonthAppointment', [AdminController::class,'thisMonthAppointment']);
+        Route::get('allThisMonthAppointmentFunction', [AdminController::class,'allThisMonthAppointmentFunction']);
     });
 // ROUTING
 

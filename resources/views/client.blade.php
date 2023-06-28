@@ -114,11 +114,11 @@
                     </div>
                     <div class="row mt-4">
                         <div class="col-11">
-                            <h5 class="modal-title fs-5" id="staticBackdropLabel">PET DETAILS</h5>
+                            <h5 class="modal-title fs-5" id="staticBackdropLabel">OWNERS PET</h5>
                         </div>
                     </div>
                     <div class="row">
-                        <table class="table table-bordered text-center mx-1">
+                        <table class="table table-bordered text-center mx-2 mt-2">
                             <thead>
                                 <tr>
                                     <th>No.</th>
@@ -129,7 +129,7 @@
                                     <th>Birth Date</th>
                                 </tr>
                             </thead>
-                            <tbody id="ownerPet">
+                            <tbody id="ownerPet" class="border-1">
 
                             </tbody>
                         </table>
