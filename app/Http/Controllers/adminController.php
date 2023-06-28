@@ -511,15 +511,14 @@ class adminController extends Controller
         $dailyReports = [
             'startDate' => Carbon::now()->format('F d, Y'),
             'data' => [],
+            'admin' => auth()->guard('adminModel')->user()->admin_name
         ];
 
         foreach ($data as $certainData) {
             $dailyReports['data'][] = $certainData;
         }
-
         $pdf = PDF::loadView('pdf.dailyReports', $dailyReports);
         return $pdf->stream('Daily Reports.pdf');
-
         }
     // PRINT DAILY REPORTS
 
@@ -627,6 +626,47 @@ class adminController extends Controller
         }
     // PRINT YEARLY REPORTS
 
+    // PRINT APPOINTMENTS REPORT
+        public function printAppointment(Request $request, $id){
+            $data = appointmentModel::join('users', 'appointment_tbl.user_id', '=', 'users.user_id')
+            ->join('pet_tbl', 'appointment_tbl.pet_id', '=', 'pet_tbl.pet_id')
+            ->where([['appointment_tbl.app_id', '=' , $id]])
+            ->select(
+                'appointment_tbl.app_id',
+                'appointment_tbl.app_type',
+                'appointment_tbl.app_date',
+                'appointment_tbl.app_time',
+                'users.user_fname',
+                'users.user_lname',
+                'users.contact',
+                'users.email',
+                'pet_tbl.pet_name',
+                'pet_tbl.pet_cm',
+                'pet_tbl.pet_breed',
+                'pet_tbl.birthdate',
+                'pet_tbl.gender',
+                'pet_tbl.species',
+            )
+            ->orderBy('app_date', 'DESC')
+            ->get();
+
+            $appointmentReports = [
+                'data' => [],
+            ];
+
+            foreach ($data as $certainData) {
+                $appointmentReports['data'][] = $certainData;
+            }
+
+            $pdf = PDF::loadView('pdf.appointmentReports', $appointmentReports);
+            return $pdf->stream('Daily Reports.pdf');
+
+        }
+    // PRINT APPOINTMENTS REPORT
+
+    // PRINT CLIENT DETAILS
+    // PRINT CLIENT DETAILS
+
     // COMPLETE APPOINTMENT FUNCTION
         public function submitCompletionAppFunction(Request $request){
          $getPet = appointmentModel::where('app_id', '=', $request->appointmentId)
@@ -683,7 +723,6 @@ class adminController extends Controller
         }
     // VIEW CLIENT DETAILS
 
-
     // VIEW PER DETAILS
         public function viewPet(Request $request){
             $data = petModel::join('users', 'pet_tbl.user_id', '=', 'users.user_id')
@@ -715,15 +754,87 @@ class adminController extends Controller
             }else{
                  echo "
                     <tr>
-                        <td class='0'></td>
-                        <td class='0'></td>
-                        <td class='12'>NO DATA FOUND</td>
-                        <td class='0'></td>
-                        <td class='0'></td>
+                        <td colspan='5'>NO DATA FOUND</td>
                     </tr>
                 ";
             }
             // return response()->json($data);
         }
     // SHOW MEDICAL HISTORY
+
+    // SHOW OWNER PET
+        public function ownerPet(Request $request){
+            $data = petModel::join('users', 'pet_tbl.user_id', '=', 'users.user_id')
+            ->where('pet_tbl.user_id', '=' , $request->userId)->get();
+            if($data->isNotEmpty()){
+                foreach($data as $count => $certainData){
+                    $newDate = date('F d, Y',strtotime($certainData->birthdate));
+                    $count = $count +1;
+                    echo "
+                    <tr>
+                        <td>$count</td>
+                        <td>$certainData->pet_name</td>
+                        <td>$certainData->species</td>
+                        <td>$certainData->pet_breed</td>
+                        <td>$certainData->pet_cm</td>
+                        <td>$newDate</td>
+                    </tr>
+                    ";
+                }
+            }else{
+                 echo "
+                    <tr>
+                        <td colspan='6'>NO DATA FOUND</td>
+                    </tr>
+
+
+                ";
+            }
+            // return response()->json($data);
+        }
+    // SHOW OWNER PET
+
+    // SUBMIT NEW APPOINTMENT
+        public function submitNewAppointment(Request $request){
+        $getOwner = petModel::where('pet_id', '=', $request->petId)
+        ->select('user_id')->first();
+        $createAppointment = appointmentModel::create([
+                'user_id' => $getOwner->user_id,
+                'pet_id' => $request->petId,
+                'app_type' => $request->typeOfNextAppointment,
+                'status' => 'Pending',
+                'app_date' => $request->dateOfNextAppointment,
+                'created_at' => now(),
+                'app_time' => $request->timeOfNextAppointment,
+                'updated_at' => now(),
+        ]);
+        return response()->json($createAppointment ? 1 : 0);
+        }
+    // SUBMIT NEW APPOINTMENT
+
+    // PRINT CLIENT INFO
+        public function printClientInfo(Request $request, $id){
+            $data = usersModel::join('pet_tbl', 'pet_tbl.user_id', '=', 'users.user_id')
+            ->where('users.user_id', '=' , $id)->get();
+
+             $clientInfo = [
+                'data' => [],
+            ];
+
+            foreach ($data as $certainData) {
+                $clientInfo= [
+                    'user_fname' => $certainData->user_fname,
+                    'user_lname' => $certainData->user_lname,
+                    'contact' => $certainData->contact,
+                    'address' => $certainData->address,
+                    'email' => $certainData->email,
+                    'data' => $data
+                ];
+            }
+
+            $pdf = PDF::loadView('pdf.clientInfo', $clientInfo);
+            return $pdf->stream('Daily Reports.pdf');
+
+        }
+    // PRINT CLIENT INFO
 }

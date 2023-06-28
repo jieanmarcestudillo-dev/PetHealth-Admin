@@ -12,9 +12,9 @@
     {{-- CSS --}}
 </head>
 <body>
-    <div class="container mt-lg-5 pt-lg-1">
-        <div class="row mt-lg-5">
-            <div class="col-4 mx-auto">
+    <div class="container-fluid h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-11 col-sm-6 col-md-5 col-lg-4 col-xl-4">
                 <div class="card rounded-0">
                     <div class="card-body">
                         <div class="row text-center">
@@ -38,7 +38,7 @@
                             <div class="alert alert-danger text-center rounded-0 d-none" role="alert">
                                 Sorry, Login Failed Wrong Username or Password
                             </div>
-                            <div class="row mx-1 mt-4">  
+                            <div class="row mx-1 mt-4">
                                 <button type="submit" class="btn rounded-0">Login</button>
                             </div>
                         </form>

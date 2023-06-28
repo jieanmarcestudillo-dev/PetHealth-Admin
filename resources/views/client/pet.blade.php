@@ -74,74 +74,117 @@
     </div>
 
     {{-- MODAL --}}
-    <div class="modal fade" id="viewPetDetails" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-        aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-body m-4">
-                    <div class="row">
-                        <div class="col-11">
-                            <h5 class="modal-title fs-5" id="staticBackdropLabel">PET DETAILS</h5>
+        {{-- VIEW PET DETAILS MODAL --}}
+            <div class="modal fade" id="viewPetDetails" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-body m-4">
+                            <div class="row">
+                                <div class="col-11">
+                                    <h5 class="modal-title fs-5" id="staticBackdropLabel">PET DETAILS</h5>
+                                </div>
+                                <div class="col-1">
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                            </div>
+                            <div class="row mt-1 g-3">
+                                <div class="col-12">
+                                    <label class="form-label">Owner Name</label>
+                                    <input readonly type="text" class="form-control bg-body" id="ownerName">
+                                </div>
+                            </div>
+                            <div class="row mt-1 g-3">
+                                <div class="col-4">
+                                    <label class="form-label">Pet Name</label>
+                                    <input readonly type="text" class="form-control bg-body" id="pet_name">
+                                </div>
+                                <div class="col-4">
+                                    <label class="form-label">Pet Breed</label>
+                                    <input readonly type="text" class="form-control bg-body" id="pet_breed">
+                                </div>
+                                <div class="col-4">
+                                    <label class="form-label">Pet Species</label>
+                                    <input readonly type="text" class="form-control bg-body" id="species">
+                                </div>
+                            </div>
+                            <div class="row mt-1 g-3">
+                                <div class="col-4">
+                                    <label class="form-label">Pet Color</label>
+                                    <input readonly type="text" class="form-control bg-body" id="pet_cm">
+                                </div>
+                                <div class="col-4">
+                                    <label class="form-label">Pet Birthdate</label>
+                                    <input readonly type="text" class="form-control bg-body" id="birthdate">
+                                </div>
+                                <div class="col-4">
+                                    <label class="form-label">Pet Gender</label>
+                                    <input readonly type="text" class="form-control bg-body" id="gender">
+                                </div>
+                            </div>
+                            <div class="row mt-4">
+                                <div class="col-11">
+                                    <h5 class="modal-title fs-5" id="staticBackdropLabel">MEDICAL HISTORY</h5>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <table class="table table-sm table-bordered text-center align-middle mt-2">
+                                    <thead>
+                                        <th>No.</th>
+                                        <th>Date</th>
+                                        <th>Type</th>
+                                        <th>Weight</th>
+                                        <th>Medicine</th>
+                                    </thead>
+                                    <tbody id="medicalHistory"></tbody>
+                                </table>
+                            </div>
                         </div>
-                        <div class="col-1">
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                    </div>
-                    <div class="row mt-1 g-3">
-                        <div class="col-12">
-                            <label class="form-label">Owner Name</label>
-                            <input readonly type="text" class="form-control bg-body" id="ownerName">
-                        </div>
-                    </div>
-                    <div class="row mt-1 g-3">
-                        <div class="col-4">
-                            <label class="form-label">Pet Name</label>
-                            <input readonly type="text" class="form-control bg-body" id="pet_name">
-                        </div>
-                        <div class="col-4">
-                            <label class="form-label">Pet Breed</label>
-                            <input readonly type="text" class="form-control bg-body" id="pet_breed">
-                        </div>
-                        <div class="col-4">
-                            <label class="form-label">Pet Species</label>
-                            <input readonly type="text" class="form-control bg-body" id="species">
-                        </div>
-                    </div>
-                    <div class="row mt-1 g-3">
-                        <div class="col-4">
-                            <label class="form-label">Pet Color</label>
-                            <input readonly type="text" class="form-control bg-body" id="pet_cm">
-                        </div>
-                        <div class="col-4">
-                            <label class="form-label">Pet Birthdate</label>
-                            <input readonly type="text" class="form-control bg-body" id="birthdate">
-                        </div>
-                         <div class="col-4">
-                            <label class="form-label">Pet Gender</label>
-                            <input readonly type="text" class="form-control bg-body" id="gender">
-                        </div>
-                    </div>
-                    <div class="row mt-4">
-                        <div class="col-11">
-                            <h5 class="modal-title fs-5" id="staticBackdropLabel">MEDICAL HISTORY</h5>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <table class="table table-sm table-bordered text-center align-middle mt-2">
-                            <thead>
-                                <th>No.</th>
-                                <th>Date</th>
-                                <th>Type</th>
-                                <th>Weight</th>
-                                <th>Medicine</th>
-                            </thead>
-                            <tbody id="medicalHistory"></tbody>
-                        </table>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
+        {{-- VIEW PET DETAILS MODAL --}}
+
+        {{-- SET PET APPOINTMENT --}}
+            <div class="modal fade" id="setPetAppointmentModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header mx-4">
+                            <h1 class="modal-title fs-5" id="staticBackdropLabel">SET APPOINTMENT</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <form id="submitNewAppointment">
+                        <div class="modal-body mx-4">
+                            <div class="mt-1 mb-3">
+                                <label class="form-label">Type of Next Appointment:</label>
+                                <select class="form-select" aria-label="Default select example" id="typeOfNextAppointment">
+                                    <option value="None" selected>Open this select type</option>
+                                    <option value="Vaccination">Vaccination</option>
+                                    <option value="Deworming">Deworming</option>
+                                    <option value="Heartworm Prevention">Heartworm Prevention</option>
+                                    <option value="Grooming">Grooming</option>
+                                    <option value="Other Treatments">Other Treatments</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Date of Next Appointment: (optional)</label>
+                                <input type="date" class="form-control" id="dateOfNextAppointment">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Time of Next Appointment: (optional)</label>
+                                <input type="time" class="form-control" id="timeOfNextAppointment">
+                            </div>
+                        </div>
+                        <div class="modal-footer mx-4">
+                            <button type="button" class="btn btn-secondary rounded-0" data-bs-dismiss="modal">CLOSE</button>
+                            <button type="submit" class="btn btn-primary rounded-0">SUBMIT</button>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        {{-- SET PET APPOINTMENT --}}
     {{-- MODAL --}}
 
     {{-- JS --}}

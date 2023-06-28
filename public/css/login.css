@@ -1,44 +1,44 @@
-    /* FONT */
-        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
-    /* FONT */
+/* FONT */
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap");
+/* FONT */
 
-    body{
-        font-family: 'Roboto', sans-serif;
-        height: 92.5vh;
-        background: linear-gradient(rgb(243, 227, 205) 30%, rgb(209, 199, 112));
-    }
+body {
+    font-family: "Roboto", sans-serif;
+    height: 100vh;
+    background: linear-gradient(rgb(243, 227, 205) 30%, rgb(209, 199, 112));
+}
 
-    .card {
-        box-shadow: 5px 4px 10px 0 rgb(0, 0, 0, 0.25);
-    }
+.card {
+    box-shadow: 5px 4px 10px 0 rgb(0, 0, 0, 0.25);
+}
 
-    .logo{
-        width: 80% !important;
-    }
+.logo {
+    width: 80% !important;
+}
 
-    h5{
-        font-weight: bold;
-        text-align: center;
-        font-size: 15px !important;
-        text-transform: uppercase;
-    } 
-    p{
-        font-size: 12px;
-        text-align: center;
-        padding-top: 5px;
-        text-transform: uppercase;
-    }
-    .alert{
-        padding: 10px !important;
-        font-size: 11px;
-    }
+h5 {
+    font-weight: bold;
+    text-align: center;
+    font-size: 15px !important;
+    text-transform: uppercase;
+}
+p {
+    font-size: 12px;
+    text-align: center;
+    padding-top: 5px;
+    text-transform: uppercase;
+}
+.alert {
+    padding: 10px !important;
+    font-size: 11px;
+}
 
-    .btn{
-        background: rgb(191, 98, 42) !important;
-        font-weight: bold !important;
-        color: #F4F4F4 !important;
-    }
+.btn {
+    background: rgb(191, 98, 42) !important;
+    font-weight: bold !important;
+    color: #f4f4f4 !important;
+}
 
-    .btn:hover{
-        background: rgb(191, 98, 42, 0.8) !important;
-    }
+.btn:hover {
+    background: rgb(191, 98, 42, 0.8) !important;
+}

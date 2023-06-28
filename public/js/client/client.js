@@ -45,7 +45,9 @@ function getAllClientFunction() {
                     return (
                         '<button type="button" data-title="View More Details?" onclick=viewClient(' +
                         data +
-                        ') class="btn rounded-0 btn-outline-success btn-sm py-2 px-3"><i class="bi bi-eye"></i></button>'
+                        ') class="btn rounded-0 btn-outline-success btn-sm py-2 px-3"><i class="bi bi-eye"></i></button> <a href="printClientInfo/' +
+                        data +
+                        '" class="btn rounded-0 btn-outline-primary btn-sm py-2 px-3" data-title="Print This Details?"><i class="bi bi-filetype-pdf"></i></a>'
                     );
                 },
             },
@@ -83,8 +85,20 @@ function viewClient(id) {
         $("#breed").val(response.pet_breed);
         var formattedDate = moment(response.birthdate).format("MMMM DD, YYYY");
         $("#birthdate").val(formattedDate);
-        $("#birthdate").val(formattedDate);
+        $("#species").val(response.species);
+        $("#pet_name").val(response.pet_name);
         $("#gender").val(response.gender);
+        ownerPet();
+        function ownerPet() {
+            $.ajax({
+                url: "/ownerPet",
+                method: "GET",
+                data: { userId: response.user_id },
+                success: function (data) {
+                    $("#ownerPet").html(data);
+                },
+            });
+        }
     });
 }
 // VIEW DETAILS

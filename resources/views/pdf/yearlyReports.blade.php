@@ -16,29 +16,86 @@
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;900&display=swap');
 
-    .font {
-        font-family: 'Roboto', sans-serif !important;
-    }
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;900&display=swap');
 
-    table {
-        border: 1px solid black;
-    }
+        .font {
+            font-family: 'Roboto', sans-serif !important;
+        }
 
-    th,
-    td {
-        border: 1px solid black;
-        padding: .5rem 0;
-    }
+        table {
+            border: 1px solid black;
+        }
 
-    /* img{
-        position: absolute;
-        right: -40px !important;
-        top: -50px !important;
-    } */
-    .font-size {
-        font-size: 14px !important;
-    }
+        th,
+        td {
+            border: 1px solid black;
+            padding: .5rem 0;
+        }
 
+        /* img{
+            position: absolute;
+            right: -40px !important;
+            top: -50px !important;
+        } */
+        .font-size {
+            font-size: 14px !important;
+        }
+
+        body {
+          font-family: Arial, sans-serif;
+        }
+
+        .header {
+          text-align: center;
+          margin-bottom: 20px;
+        }
+
+        .name {
+          font-size: 24px;
+          font-weight: bold;
+          text-transform: uppercase;
+        }
+
+        .contact-info {
+          font-size: 14px;
+          margin-bottom: 10px;
+          text-transform: uppercase;
+          }
+
+        .section {
+          margin-bottom: 20px;
+        }
+
+        .section-title {
+          font-size: 18px;
+          font-weight: bold;
+          margin-bottom: 10px;
+          text-transform: uppercase;
+        }
+
+        .subsection-title {
+          font-size: 16px;
+          font-weight: bold;
+          margin-bottom: 10px;
+        }
+
+        .item {
+          margin-bottom: 5px;
+        }
+
+        .item-title {
+          font-weight: bold;
+          display: inline-block;
+          width: 120px;
+        }
+
+        .item-content {
+          display: inline-block;
+        }
+
+        .table{
+            margin-top: -30px;
+        }
 </style>
 {{-- STYLE --}}
 
@@ -57,7 +114,7 @@
     <div class="section mt-4">
         <p class="fw-bold font-size font">APPOINTMENT SUMMARY</p>
         <div class="item">
-            <p class="font-size font">YEARLY REPORT: <br> Year: {{$year}} </p>
+            <p class="font-size font">YEARLY REPORT: ALL SERVICES<br> YEAR: {{$year}} </p>
         </div>
     </div>
     @if(!$data->isEmpty())
@@ -101,13 +158,13 @@
         <tbody>
             <tr class="font-size font">
                 <td colspan="7">NO REPORTS FOUND</td>
-
-
             </tr>
         </tbody>
     </table>
     @endif
     {{-- BODY --}}
+    <p>Generate By: {{ auth()->guard('adminModel')->user()->admin_name}}</p>
+    <p style="margin-top: -10px;">Generate On: {{  date('F d, Y', strtotime(now()))}}</p>
 </body>
 
 </html>

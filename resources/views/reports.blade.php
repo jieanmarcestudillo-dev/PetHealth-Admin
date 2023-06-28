@@ -62,7 +62,7 @@
                                         <a class="nav-link" href="/otherReports">Other Treatment</a>
                                     </li>
                                     <li class="nav-item ms-auto">
-                                        <button type="button" class="btn btn-outline-secondary btn-sm px-4 rounded-0" data-bs-toggle="modal" data-bs-target="#exampleModal">Generate Reports</button>
+                                        <button type="button" class="btn btn-outline-secondary btn-sm px-4 py-2 rounded-0" data-bs-toggle="modal" data-bs-target="#exampleModal">Generate Reports</button>
                                     </li>
                                 </ul>
                                 <table id="allReports" class="table table-bordered text-center align-middle">
@@ -183,9 +183,9 @@
                     @csrf
                     <div class="modal-body">
                     <div class="row">
-                        <div class="col-6">
+                        <div class="col-8">
                             <label for="exampleFormControlInput1" class="form-label">Select Year</label>
-                            <select class="form-select" aria-label="Default select example" name="year" id="year" required>
+                            <select class="form-select rounded-0" aria-label="Default select example" name="year" id="year" required>
                                 <option selected>Open this select year</option>
                                 <option value="2020">2020</option>
                                 <option value="2021">2021</option>
@@ -196,11 +196,12 @@
                                 <option value="2026">2026</option>
                             </select>
                         </div>
+                        <div class="col-4">
+                            <label for="exampleFormControlInput1" class="form-label me-5 pe-5">Action</label>
+                            <button type="button" class="btn btn-secondary rounded-0" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary rounded-0">Submit</button>
                         </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary rounded-0" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary rounded-0">Submit</button>
+                        </div>
                     </div>
                     </form>
                     </div>

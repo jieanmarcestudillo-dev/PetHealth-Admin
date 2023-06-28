@@ -117,25 +117,22 @@
                             <h5 class="modal-title fs-5" id="staticBackdropLabel">PET DETAILS</h5>
                         </div>
                     </div>
-                    <div class="row mt-1 g-3">
-                        <div class="col-6">
-                            <label class="form-label">Color</label>
-                            <input readonly type="text" class="form-control bg-body" id="color">
-                        </div>
-                        <div class="col-6">
-                            <label class="form-label">Breed</label>
-                            <input readonly type="text" class="form-control bg-body" id="breed">
-                        </div>
-                    </div>
-                        <div class="row mt-1 g-3">
-                        <div class="col-6">
-                            <label class="form-label">Birthdate</label>
-                            <input readonly type="text" class="form-control bg-body" id="birthdate">
-                        </div>
-                        <div class="col-6">
-                            <label class="form-label">Gender</label>
-                            <input readonly type="text" class="form-control bg-body" id="gender">
-                        </div>
+                    <div class="row">
+                        <table class="table table-bordered text-center mx-1">
+                            <thead>
+                                <tr>
+                                    <th>No.</th>
+                                    <th>Name</th>
+                                    <th>Species</th>
+                                    <th>Breed</th>
+                                    <th>Color</th>
+                                    <th>Birth Date</th>
+                                </tr>
+                            </thead>
+                            <tbody id="ownerPet">
+
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>

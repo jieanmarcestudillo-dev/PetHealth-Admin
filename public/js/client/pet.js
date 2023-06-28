@@ -63,7 +63,9 @@ function getAllPetFunction() {
                     return (
                         '<button type="button" data-title="View More Details?" onclick=viewPet(' +
                         data +
-                        ') class="btn rounded-0 btn-outline-success btn-sm py-2 px-3"><i class="bi bi-eye"></i></button>'
+                        ') class="btn rounded-0 btn-outline-success btn-sm py-2 px-3"><i class="bi bi-eye"></i></button> <button type="button" data-title="Set Appointment?" onclick=setPetAppointment(' +
+                        data +
+                        ') class="btn rounded-0 btn-outline-success btn-sm py-2 px-3"><i class="bi bi-calendar-range"></i></button>'
                     );
                 },
             },
@@ -117,3 +119,56 @@ function viewPet(id) {
     });
 }
 // VIEW PET DETAILS
+
+// SET PET APPROINTMENT
+function setPetAppointment(id) {
+    localStorage.setItem("petId", id);
+    $("#setPetAppointmentModal").modal("show");
+}
+// SET PET APPROINTMENT
+
+// SUBMIT APPOINTMENT
+$("body").delegate("#submitNewAppointment", "submit", function (e) {
+    e.preventDefault();
+    var petId = localStorage.getItem("petId");
+    var typeOfNextAppointment = $("#typeOfNextAppointment").val();
+    var dateOfNextAppointment = $("#dateOfNextAppointment").val();
+    var timeOfNextAppointment = $("#timeOfNextAppointment").val();
+    $.ajax({
+        url: "/submitNewAppointment",
+        type: "POST",
+        method: "POST",
+        dataType: "text",
+        data: {
+            petId: petId,
+            typeOfNextAppointment: typeOfNextAppointment,
+            dateOfNextAppointment: dateOfNextAppointment,
+            timeOfNextAppointment: timeOfNextAppointment,
+        },
+        success: function (response) {
+            if (response == 1) {
+                // APPOINTMENT SUBMIT SUCCESSFULY
+                $("#submitNewAppointment").trigger("reset");
+                $("#petDetails").DataTable().ajax.reload();
+                Swal.fire({
+                    position: "center",
+                    icon: "success",
+                    title: "APPOINTMENT HAS BEEN COMPLETED",
+                    showConfirmButton: false,
+                    timer: 1500,
+                });
+            } else {
+                // SOMETHING WRONG IN BACKEND
+                Swal.fire(
+                    "Added Failed",
+                    "Sorry appointment has not complete",
+                    "error"
+                );
+            }
+        },
+        error: function (error) {
+            console.log(error);
+        },
+    });
+});
+// SUBMIT APPOINTMENT

@@ -59,9 +59,12 @@ Route::get('/', [adminController::class,'login'])->name('login');
         Route::get('printWeeklyReports', [AdminController::class,'printWeeklyReports']);
         Route::get('printMonthlyReports', [AdminController::class,'printMonthlyReports']);
         Route::get('printYearlyReports', [AdminController::class,'printYearlyReports']);
+        Route::get('printAppointment/{id}', [AdminController::class,'printAppointment']);
+        Route::get('printClientInfo/{id}', [AdminController::class,'printClientInfo']);
         Route::get('viewClient', [AdminController::class,'viewClient']);
         Route::get('viewPet', [AdminController::class,'viewPet']);
         Route::get('petMedicalHistory', [AdminController::class,'petMedicalHistory']);
+        Route::get('ownerPet', [AdminController::class,'ownerPet']);
     // GET
 
     // POST
@@ -70,5 +73,6 @@ Route::get('/', [adminController::class,'login'])->name('login');
         Route::post('printMonthlyReports', [AdminController::class,'printMonthlyReports']);
         Route::post('printYearlyReports', [AdminController::class,'printYearlyReports']);
         Route::post('submitCompletionAppFunction', [AdminController::class,'submitCompletionAppFunction']);
+        Route::post('submitNewAppointment', [AdminController::class,'submitNewAppointment']);
     // POST
 // FUNCTION

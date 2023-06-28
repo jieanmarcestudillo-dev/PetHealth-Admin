@@ -24,7 +24,7 @@
                     <nav class="navbar navbar-expand-lg text-white border-bottom">
                         <div class="container-fluid">
                             {{-- <button class="btn btn-lg px-4 m-0" id="sidebarToggle"><i class="fa-solid fa-bars"></i></button> --}}
-                            <h4 class="m-0">DASHBOARD</h4>
+                            <h4 class="ms-2">DASHBOARD</h4>
                             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                                 <ul class="navbar-nav ms-auto">
                                     <li>
@@ -39,7 +39,7 @@
                 {{-- NAV BAR --}}
 
                 {{-- MAIN CONTENT --}}
-                <div class="container-fluid mainBar mb-5">
+                <div class="container-fluid mainBar">
                     <div class="row mb-3">
                         <div class="col-3">
                             <div class="card shadow" style="height:8rem; border-radius:10px; background-color:#ffff;">
