@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\adminController;
 
+// Route::domain('tarana.mleystock-pile.com')->group(function(){
+
 Route::get('/', [adminController::class,'login'])->name('login');
 
 // LOGIN FUNCTION
@@ -82,3 +84,6 @@ Route::get('/', [adminController::class,'login'])->name('login');
         Route::post('submitNewAppointment', [AdminController::class,'submitNewAppointment']);
     // POST
 // FUNCTION
+
+// });
+

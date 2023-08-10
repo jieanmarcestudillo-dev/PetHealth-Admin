@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Redirect;
+
 use App\Models\adminModel;
 use App\Models\completedModel;
 use App\Models\pendingModel;
